@@ -18,7 +18,7 @@
     "eject": "react-scripts eject",
     "rm": "rm -rf docs",
     "mv": "mv build docs",
-    "git": "git branch -D gh-pages; git checkout gh-pages && git add . && git commit -m \"npm run deploy\" && git push origin gh-pages && git checkout -",
+    "git": "if git branch -a --format='%(refname:short)' | egrep '^gh-pages$' > /dev/null ;then git branch -D gh-pages ;fi ; git checkout -b gh-pages && git add . && git commit -m \"npm run deploy\" && git push -f origin gh-pages && git checkout - && git branch -d gh-pages",
     "deploy": "npm run rm && npm run build && npm run mv && npm run git"
   },
   "eslintConfig": {
